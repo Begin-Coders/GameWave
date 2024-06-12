@@ -1,0 +1,34 @@
+h2 {
+    font-family: Geist;
+}
+
+nav {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+button {
+    all: unset;
+    cursor: pointer;
+    font-family: Geist;
+    font-size: 1.5rem;
+    border: 2px solid hsl(var(--primary));
+    border-radius: var(--radius);
+    padding: 1px 0.5rem 0.1rem 0.5rem;
+}
+
+#navbar {
+    width: 20vw;
+    height: 100vh;
+    border-right: 2px solid hsl(var(--border));
+    border-radius: var(--radius);
+}
+
+.top {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem 0;
+}
