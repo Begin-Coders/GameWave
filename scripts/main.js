@@ -6,61 +6,55 @@ console.log("Welcome to GameWave!");
 const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
 
 prefersDarkScheme.addEventListener("change", (e) => {
-    const root = document.documentElement;
-
-    if (e.matches) {
-        root.classList.add("dark");
-    } else {
-        root.classList.remove("dark");
-    }
+    document.documentElement.classList.toggle("dark", e.matches);
 });
 
 // Navbar Component
 NavComponent().then((html) => {
-    document.getElementById("navbar").innerHTML = html;
+    const navbar = document.getElementById("navbar");
+    navbar.innerHTML = html;
 
     const button = document.getElementById("nav-toggle-button");
+    const navTitle = document.getElementById("navbar-title");
+    const landingPage = document.getElementById("landing-page-container");
+    const bottom = document.getElementsByClassName("bottom")[0];
 
     button.addEventListener("click", () => {
         console.log("Button clicked!");
 
-        const nav = document.getElementById("navbar");
-        const navTitle = document.getElementById("navbar-title");
-        const landingPage = document.getElementById("landing-page-container");
+        const isNavExpanded =
+            navbar.style.width == "20vw" || navbar.style.width == "";
+        navbar.style.width = isNavExpanded ? "5vw" : "20vw";
+        navTitle.style.display = isNavExpanded ? "none" : "block";
+        bottom.style.display = isNavExpanded ? "none" : "block";
+        button.textContent = isNavExpanded ? ">" : "<";
 
-        if (nav.style.width == "20vw" || nav.style.width == "") {
-            navTitle.style.display = "none";
-            nav.style.width = "5vw";
-            button.innerHTML = ">";
-            landingPage.addclassName("dark");
-            //-----Landing Page resizing-----
-            if (landingPage.length > 0) {
-                    const landingPage = elements[0];
-                    if (landingPage.style.width === '80vw' || landingPage.style.width == '') {
-                        landingPage.style.width = '100vw';
-                        landingPage.style.left = '0';
-                    } else {
-                        landingPage.style.width = '80vw';
-                        landingPage.style.left = '20vw';
-                    }
-            }
-            //-----Landing Page resizing-----
-        } else {
-            nav.style.width = "20vw";
-            navTitle.style.display = "block";
-            button.innerHTML = "<";
+        // Expand landing page
+        if (landingPage.length > 0) {
+            const isLandingPageExpanded =
+                landingPage.style.width === "80vw" ||
+                landingPage.style.width == "";
+            landingPage.style.width = isLandingPageExpanded ? "100vw" : "80vw";
+            landingPage.style.left = isLandingPageExpanded ? "0" : "20vw";
         }
+    });
+
+    // Change theme
+    const themeToggle = document.getElementById("theme-toggle-button");
+
+    themeToggle.addEventListener("click", () => {
+        document.documentElement.classList.toggle("dark");
     });
 });
 
-// -- Landing page component --
-
-function loadLandingPage() {
-    fetch('../components/landingpage.html')
-        .then(response => response.text())
-        .then(data => {
-            document.getElementById('landing-page-container').innerHTML = data;
-        })
-        .catch(error => console.error('Error loading landing page:', error));
+// Load Landing Page
+async function loadLandingPage() {
+    try {
+        const response = await fetch("../components/landingpage.html");
+        const data = await response.text();
+        document.getElementById("landing-page-container").innerHTML = data;
+    } catch (error) {
+        console.error("Error loading landing page:", error);
+    }
 }
-document.addEventListener('DOMContentLoaded', loadLandingPage);
+document.addEventListener("DOMContentLoaded", loadLandingPage);

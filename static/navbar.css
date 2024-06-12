@@ -1,7 +1,3 @@
-h2 {
-    font-family: Geist;
-}
-
 nav {
     height: 100%;
     display: flex;
@@ -19,6 +15,14 @@ button {
     padding: 1px 0.5rem 0.1rem 0.5rem;
 }
 
+ul li {
+    list-style: none;
+}
+
+a {
+    all: unset;
+}
+
 #navbar {
     width: 20vw;
     height: 100vh;
@@ -32,4 +36,23 @@ button {
     align-items: center;
     justify-content: space-around;
     padding: 2rem 0;
+}
+
+.bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    padding: 2rem;
+    gap: 2rem;
+}
+
+.bottom div {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.bottom button {
+    border-radius: 2rem;
 }

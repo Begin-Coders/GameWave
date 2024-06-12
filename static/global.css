@@ -54,18 +54,20 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    color: hsl(var(--foreground));
+    font-family: Geist;
 }
 
 body {
     background-color: hsl(var(--background));
 }
 
-.landing-page{
+.landing-page {
     display: flex;
     flex-direction: row;
     align-items: center;
 }
-#landing-page-container{
+#landing-page-container {
     height: 100vh;
     width: 100%;
 }
