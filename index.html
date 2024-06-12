@@ -5,12 +5,29 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
         <link rel="stylesheet" href="./static/global.css" />
+        <link rel="stylesheet" href="./static/Landingpage.css">
 
         <title>GameWave</title>
+
+        <script>
+            function loadLandingPage() {
+                fetch('../components/landingpage.html')
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('landing-page-container').innerHTML = data;
+                    })
+                    .catch(error => console.error('Error loading landing page:', error));
+            }
+            document.addEventListener('DOMContentLoaded', loadLandingPage);
+        </script>
     </head>
 
     <body>
         <h2>GameWave</h2>
+        <div id="landing-page-container"></div>
+        
     </body>
     <script src="./scripts/main.js"></script>
+    <script src="../scripts/LandingPage.js"></script>
+
 </html>
