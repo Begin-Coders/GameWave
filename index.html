@@ -9,22 +9,13 @@
 
         <title>GameWave</title>
 
-        <script>
-            function loadLandingPage() {
-                fetch('../components/landingpage.html')
-                    .then(response => response.text())
-                    .then(data => {
-                        document.getElementById('landing-page-container').innerHTML = data;
-                    })
-                    .catch(error => console.error('Error loading landing page:', error));
-            }
-            document.addEventListener('DOMContentLoaded', loadLandingPage);
-        </script>
     </head>
 
     <body>
+        <div class="landing-page">
         <div id="navbar"></div>
         <div id="landing-page-container"></div>
+    </div>
     </body>
     <script type="module" src="./scripts/main.js"></script>
     <script src="../scripts/LandingPage.js"></script>

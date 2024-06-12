@@ -1,8 +1,10 @@
 .landing-container{
-    height: 100vh;
-    width: 80vw;
+    height: 100%;
+    width: 100%;
     position: relative;
-    left: 20rem;
     background:var(--background);
     color:var(--foreground);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

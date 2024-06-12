@@ -26,11 +26,25 @@ NavComponent().then((html) => {
 
         const nav = document.getElementById("navbar");
         const navTitle = document.getElementById("navbar-title");
+        const landingPage = document.getElementById("landing-page-container");
 
         if (nav.style.width == "20vw" || nav.style.width == "") {
             navTitle.style.display = "none";
             nav.style.width = "5vw";
             button.innerHTML = ">";
+            landingPage.addclassName("dark");
+            //-----Landing Page resizing-----
+            if (landingPage.length > 0) {
+                    const landingPage = elements[0];
+                    if (landingPage.style.width === '80vw' || landingPage.style.width == '') {
+                        landingPage.style.width = '100vw';
+                        landingPage.style.left = '0';
+                    } else {
+                        landingPage.style.width = '80vw';
+                        landingPage.style.left = '20vw';
+                    }
+            }
+            //-----Landing Page resizing-----
         } else {
             nav.style.width = "20vw";
             navTitle.style.display = "block";
@@ -38,3 +52,15 @@ NavComponent().then((html) => {
         }
     });
 });
+
+// -- Landing page component --
+
+function loadLandingPage() {
+    fetch('../components/landingpage.html')
+        .then(response => response.text())
+        .then(data => {
+            document.getElementById('landing-page-container').innerHTML = data;
+        })
+        .catch(error => console.error('Error loading landing page:', error));
+}
+document.addEventListener('DOMContentLoaded', loadLandingPage);
