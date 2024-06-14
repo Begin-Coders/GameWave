@@ -21,23 +21,45 @@ NavComponent().then((html) => {
     const landingPage = document.getElementById("landing-page-container");
     const bottom = document.getElementsByClassName("bottom")[0];
 
+    // Check if the device is not a laptop or tablet
+    const isNotLaptopOrTablet = window.matchMedia("(max-width: 768px)");
+
+    console.log("isNotLaptopOrTablet:", isNotLaptopOrTablet);
+
+    if (isNotLaptopOrTablet.matches) {
+        navbar.style.width = "15vw";
+        navbar.style.position = "fixed";
+        navTitle.style.display = "none";
+        bottom.style.visibility = "hidden";
+        button.textContent = ">";
+        navbar.style.zIndex = "1";
+    }
+
     button.addEventListener("click", () => {
         console.log("Button clicked!");
 
         const isNavExpanded =
-            navbar.style.width == "20vw" || navbar.style.width == "";
-        navbar.style.width = isNavExpanded ? "5vw" : "20vw";
-        navTitle.style.display = isNavExpanded ? "none" : "block";
-        bottom.style.display = isNavExpanded ? "none" : "block";
+            navbar.style.width == "20vw" ||
+            navbar.style.width == "" ||
+            navbar.style.width == "80vw";
+
+        navbar.style.width = isNavExpanded
+            ? isNotLaptopOrTablet.matches
+                ? "15vw"
+                : "5vw"
+            : isNotLaptopOrTablet.matches
+            ? "80vw"
+            : "20vw";
         button.textContent = isNavExpanded ? ">" : "<";
 
-        // Expand landing page
-        if (landingPage.length > 0) {
-            const isLandingPageExpanded =
-                landingPage.style.width === "80vw" ||
-                landingPage.style.width == "";
-            landingPage.style.width = isLandingPageExpanded ? "100vw" : "80vw";
-            landingPage.style.left = isLandingPageExpanded ? "0" : "20vw";
+        if (isNavExpanded) {
+            navTitle.style.display = "none";
+            bottom.style.visibility = "hidden";
+        } else {
+            setTimeout(() => {
+                navTitle.style.display = "block";
+                bottom.style.visibility = "visible";
+            }, 150);
         }
     });
 
@@ -46,6 +68,17 @@ NavComponent().then((html) => {
 
     themeToggle.addEventListener("click", () => {
         document.documentElement.classList.toggle("dark");
+
+        const themeToggleImg = document.getElementById("theme-toggle-img");
+        const githubLogo = document.getElementById("github-logo");
+
+        if (document.documentElement.classList.contains("dark")) {
+            themeToggleImg.src = "../static/assets/image/moon.svg";
+            githubLogo.src = "../static/assets/image/github-white.svg";
+        } else {
+            themeToggleImg.src = "../static/assets/image/sun.svg";
+            githubLogo.src = "../static/assets/image/github-black.svg";
+        }
     });
 });
 
