@@ -1,4 +1,6 @@
 import NavComponent from "./NavComponent.js";
+import loadLandingPage  from "./LandingPage.js";
+import { games } from "./data.js";
 
 console.log("Welcome to GameWave!");
 
@@ -48,13 +50,19 @@ NavComponent().then((html) => {
 });
 
 // Load Landing Page
-async function loadLandingPage() {
-    try {
-        const response = await fetch("../components/landingpage.html");
-        const data = await response.text();
-        document.getElementById("landing-page-container").innerHTML = data;
-    } catch (error) {
-        console.error("Error loading landing page:", error);
-    }
-}
-document.addEventListener("DOMContentLoaded", loadLandingPage);
+loadLandingPage().then((html) => {
+    const cardsContainer = document.querySelector('.cards-container');
+    console.log(cardsContainer.innerHTML);
+    // games.forEach((game) => {
+    // const cardContent = `
+    //     div<".card">
+    //         <h3 class="card-title">${game.title}</h3>
+    //         <div class="card-img">
+    //             <img src="${game.img}" alt="${game.title}"></img>
+    //         </div>
+    //     </div>
+    // `
+    // });
+    // cardsContainer.appendChild(cardContent);
+})
+
