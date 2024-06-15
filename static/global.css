@@ -56,25 +56,9 @@
     box-sizing: border-box;
     color: hsl(var(--foreground));
     font-family: Geist;
+    scrollbar-width: none;
 }
 
 body {
     background-color: hsl(var(--background));
-}
-
-.landing-page {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    z-index: 0;
-}
-#landing-page-container {
-    height: 100vh;
-    width: 100%;
-}
-
-@media (max-width: 768px) {
-    #landing-page-container {
-        padding-left: 15vw;
-    }
 }
