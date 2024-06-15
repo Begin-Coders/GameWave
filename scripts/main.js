@@ -6,18 +6,7 @@ import { games } from "./data.js";
 
 console.log("Welcome to GameWave!");
 
-// Default theme
-const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
-
-prefersDarkScheme.addEventListener("change", (e) => {
-    document.documentElement.classList.toggle("dark", e.matches);
-});
-
-// Navbar Component
-NavComponent().then((html) => {
-    const navbar = document.getElementById("navbar");
-    navbar.innerHTML = html;
-
+function setUpNavbar() {
     const button = document.getElementById("nav-toggle-button");
     const navTitle = document.getElementById("navbar-title");
     const bottom = document.getElementsByClassName("bottom")[0];
@@ -72,7 +61,9 @@ NavComponent().then((html) => {
             }
         }
     });
+}
 
+function setUpThemeToggle() {
     // Change theme
     const themeToggle = document.getElementById("theme-toggle-button");
 
@@ -90,15 +81,9 @@ NavComponent().then((html) => {
             githubLogo.src = "../static/assets/image/github-black.svg";
         }
     });
-});
+}
 
-// Load Landing Page
-loadLandingPage().then((html) => {
-    const landingPageContainer = document.getElementById(
-        "landing-page-container"
-    );
-    landingPageContainer.innerHTML = html;
-
+function SetUpGameCards() {
     const landingContainer = document.getElementById("landing-container");
 
     // Creating Game Section
@@ -127,6 +112,7 @@ loadLandingPage().then((html) => {
                 const gameCard = document.createElement("div");
                 gameCard.classList.add("game-card");
                 gameCard.innerHTML = html;
+                gameCard.id = game.name;
 
                 const gameImg = gameCard.getElementsByClassName("card-img")[0];
                 gameImg.src = game.src;
@@ -137,10 +123,68 @@ loadLandingPage().then((html) => {
 
         landingContainer.appendChild(gameSectionWrapper);
     }
-});
+}
 
+function setUpGameCardsPopup(popup) {
+    const gameCards = document.getElementsByClassName("game-card");
+    for (let gameCard of gameCards) {
+        gameCard.addEventListener("click", () => {
+            popup.style.display = "block";
 
-// Creating Popup Component
-PopupComponent().then((html) => {
-    const popup=document.getElementById("popup");
-});
+            const landingPage =
+                document.getElementsByClassName("landing-page")[0];
+            landingPage.style.filter = "blur(5px)";
+        });
+
+        
+    }
+}
+
+function initializeApp() {
+    // Rendering Navbar
+    NavComponent()
+        .then((html) => {
+            const navbar = document.getElementById("navbar");
+            navbar.innerHTML = html;
+
+            setUpNavbar();
+            setUpThemeToggle();
+        })
+        .then(() => {
+            // Rendering Landing Page
+            return loadLandingPage().then((html) => {
+                const landingPageContainer = document.getElementById(
+                    "landing-page-container"
+                );
+                landingPageContainer.innerHTML = html;
+
+                return SetUpGameCards();
+            });
+        })
+        .then(() => {
+            // Rendering Popup
+            return PopupComponent().then((html) => {
+                const popup = document.getElementById("popup");
+                popup.innerHTML = html;
+                popup.style.display = "none";
+
+                setUpGameCardsPopup(popup);
+            });
+        });
+}
+
+function setUpTheme() {
+    // Default theme
+    const prefersDarkScheme = window.matchMedia("(prefers-color-scheme: dark)");
+
+    prefersDarkScheme.addEventListener("change", (e) => {
+        document.documentElement.classList.toggle("dark", e.matches);
+    });
+}
+
+function main() {
+    setUpTheme();
+    initializeApp();
+}
+
+main();
