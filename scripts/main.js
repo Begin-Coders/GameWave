@@ -116,7 +116,7 @@ function SetUpGameCards() {
 
                 const gameImg = gameCard.getElementsByClassName("card-img")[0];
                 gameImg.src = game.src;
-
+                
                 gameCardsContainer.appendChild(gameCard);
             });
         });
@@ -133,7 +133,9 @@ function setUpGameCardsPopup(popup) {
 
             const landingPage =
                 document.getElementsByClassName("landing-page")[0];
+            landingPage.style= "background-color:pink";
             landingPage.style.filter = "blur(5px)";
+            
         });
 
         

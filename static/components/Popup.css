@@ -1,50 +1,50 @@
-.popup {
+
+#popup
+{  
+    position: fixed;
+    top:50%;
+    left:50%;
+    transform: translate(-50%,-50%);
     z-index: 2;
 }
-.start-btn {
-    font-family: "Montserrat Subrayada", sans-serif;
-    font-weight: 700;
-    font-style: normal;
+.popup {
+    
     position: relative;
-    top: 80%;
-    left: 35%;
-    width: 150px;
-    height: 50px;
-    border-radius: 20px;
-    background-color: yellow;
-    transition: 0.5s top;
+    width: 450px;
+    height: 400px;
+    background-color: hsl(var(--secondary));;
+    border-radius: 25px;
+        
 }
-.start-btn:hover {
-    top: 78%;
-}
-.cross-btn {
+.play-btn{
     position: absolute;
-    left: 93%;
-    top: 7px;
-    color: rgb(14, 13, 13);
-    color: red;
+    
+    color:hsl(var(--foreground));
+    top:75%;
+    right: 20%;
+}
+.game-name{
+    position: relative;
+    font-size: 30px;
+    margin-left: 12%;
+    color: (var(--primary));;
+    color: hsl(var(--primary));
+}
+.game-img{
+    
+    margin: 10px 0px 0px 50px;
+    width: 350px;
+    height: 250px;
+    border-radius: 15px;
+    
+
+}
+.cls-btn{
     font-size: 20px;
-    background: transparent;
-    border: none;
-}
-.cross-btn:hover {
+    padding: 0px 6px 0px 6px;
+    margin: 0;
     border: 1px solid red;
-    font-size: 22px;
-    border-radius: 4px;
-}
-.game-img {
-    border-radius: 10px;
-    margin: 5% 0% 0% 9%;
-    position: absolute;
-    width: 400px;
-}
-.game-name {
-    font-family: "Montserrat Subrayada", sans-serif;
-    font-weight: 700;
-    font-size: 24px;
-    font-style: normal;
-    color: aliceblue;
-    position: absolute;
-    top: 65%;
-    left: 10%;
+    color: red;
+    float: right;
+   
 }

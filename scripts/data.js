@@ -3,6 +3,7 @@ export let games = {
         {
             name: "XO",
             src: "../static/assets/image/sun.svg",
+            total_players:2,
         },
     ],
 };
