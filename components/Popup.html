@@ -1,14 +1,16 @@
 <link rel="stylesheet" href="../static/components/Popup.css" />
 
 <div class="popup">
-    <button class="cls-btn">x</button>
-    <img class="game-img" src="../static/assets/image/man-racing-dirt-bike-fantasy-environment_23-2151500473.avif" alt="" />
-    <div class="game-name"></div>
-    <select name="" id="">
-        <option value=""></option>
-        <option value=""></option>
-        <option value=""></option>
-        <option value=""></option>
-    </select>
-    <button  class="play-btn">Start</button>
+    <img id="popup-game-img" src="" alt="" />
+    <div id="popup-game-details">
+        <h2 id="popup-game-title"></h2>
+        <div id="popup-game-options">
+            <h4>Game Options</h4>
+            <form action="">
+                <label>Player Count: </label>
+                <select id="pop-up-pc"></select>
+            </form>
+        </div>
+        <button id="popup-play-btn">Play</button>
+    </div>
 </div>

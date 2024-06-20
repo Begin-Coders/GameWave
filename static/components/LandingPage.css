@@ -7,7 +7,7 @@
     overflow: auto;
 }
 
-.landing-page {
+#landing-screen {
     display: flex;
     flex-direction: row;
     align-items: center;

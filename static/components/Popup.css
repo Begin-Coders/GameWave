@@ -1,50 +1,60 @@
-
-#popup
-{  
+#popup-container {
     position: fixed;
-    top:50%;
-    left:50%;
-    transform: translate(-50%,-50%);
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+#popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     z-index: 2;
 }
 .popup {
-    
     position: relative;
-    width: 450px;
-    height: 400px;
-    background-color: hsl(var(--secondary));;
-    border-radius: 25px;
-        
+    width: 35vw;
+    height: 45vh;
+    background-color: hsl(var(--secondary));
+    border-radius: var(--radius);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
 }
-.play-btn{
-    position: absolute;
-    
-    color:hsl(var(--foreground));
-    top:75%;
-    right: 20%;
-}
-.game-name{
+#popup-game-details {
     position: relative;
-    font-size: 30px;
-    margin-left: 12%;
-    color: (var(--primary));;
-    color: hsl(var(--primary));
+    width: 45%;
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding: 30px 0 30px 0;
 }
-.game-img{
-    
-    margin: 10px 0px 0px 50px;
-    width: 350px;
-    height: 250px;
-    border-radius: 15px;
-    
-
+#popup-play-btn {
+    border-radius: var(--radius);
+    font-size: medium;
 }
-.cls-btn{
-    font-size: 20px;
-    padding: 0px 6px 0px 6px;
-    margin: 0;
-    border: 1px solid red;
-    color: red;
-    float: right;
-   
+#popup-play-btn:hover {
+    background-color: hsl(var(--primary));
+}
+#popup-game-img {
+    position: relative;
+    width: 45%;
+    height: 90%;
+    border-radius: var(--radius);
+    object-fit: cover;
+    object-position: center;
+}
+#popup-game-options {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+#popup-game-options select {
+    border-color: hsl(var(--foreground));
+    border-radius: var(--radius);
 }

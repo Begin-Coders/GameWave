@@ -112,11 +112,15 @@ function SetUpGameCards() {
                 const gameCard = document.createElement("div");
                 gameCard.classList.add("game-card");
                 gameCard.innerHTML = html;
-                gameCard.id = game.name;
+                gameCard.id = "game_" + game.id;
+
+                gameCard.dataset.details = JSON.stringify(game);
 
                 const gameImg = gameCard.getElementsByClassName("card-img")[0];
                 gameImg.src = game.src;
-                
+
+                gameCard.style.cursor = "pointer";
+
                 gameCardsContainer.appendChild(gameCard);
             });
         });
@@ -125,21 +129,43 @@ function SetUpGameCards() {
     }
 }
 
-function setUpGameCardsPopup(popup) {
+function setUpGameCardsPopup(popupContainer, popup) {
+    const body = document.body;
     const gameCards = document.getElementsByClassName("game-card");
     for (let gameCard of gameCards) {
         gameCard.addEventListener("click", () => {
+            body.classList.add("no-scroll");
+            popupContainer.style.visibility = "visible";
+            popupContainer.style.backgroundColor = "rgba(0, 0, 0, 0.8)";
             popup.style.display = "block";
+            popup.style.filter = "none";
 
-            const landingPage =
-                document.getElementsByClassName("landing-page")[0];
-            landingPage.style= "background-color:pink";
-            landingPage.style.filter = "blur(5px)";
-            
+            // Setting game details in popup
+            const gameDetails = JSON.parse(gameCard.dataset.details);
+
+            document.getElementById("popup-game-title").innerHTML =
+                gameDetails.name;
+            document.getElementById("popup-game-img").src = gameDetails.src;
+
+            const popupSelect = document.getElementById("pop-up-pc");
+            popupSelect.innerHTML = "";
+            for (let i = 1; i <= gameDetails.total_players; i++) {
+                let option = document.createElement("option");
+                option.value = i;
+                option.text = i;
+                popupSelect.appendChild(option);
+            }
         });
-
-        
     }
+
+    popupContainer.addEventListener("click", (event) => {
+        if (event.target === popupContainer) {
+            popupContainer.style.visibility = "hidden";
+            popupContainer.style.filter = "none";
+            popup.style.display = "none";
+            body.classList.remove("no-scroll");
+        }
+    });
 }
 
 function initializeApp() {
@@ -170,7 +196,11 @@ function initializeApp() {
                 popup.innerHTML = html;
                 popup.style.display = "none";
 
-                setUpGameCardsPopup(popup);
+                const popupContainer =
+                    document.getElementById("popup-container");
+                popupContainer.style.visibility = "hidden";
+
+                setUpGameCardsPopup(popupContainer, popup);
             });
         });
 }
