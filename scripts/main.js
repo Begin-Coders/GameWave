@@ -2,6 +2,7 @@ import NavComponent from "./components/NavComponent.js";
 import loadLandingPage from "./components/LandingPage.js";
 import GameCardComponent from "./components/GameCard.js";
 import PopupComponent from "./components/popup.js";
+import LayoutPage from "./components/Layout.js";
 import { games } from "./data.js";
 
 console.log("Welcome to GameWave!");

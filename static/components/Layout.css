@@ -1,0 +1,112 @@
+.layout-container{
+  width:700px;
+  height: 599px;
+  background-color:rgb(248, 248, 248);/* rgb(241, 241, 241); */
+  border-radius: 2%;
+  border: solid 2px rgb(206, 206, 206);
+  position:absolute;
+  left:300px;
+  z-index: 3;
+}
+.lc1,.lc2,.lc3,.lc4{
+  width:170px;
+  height: 65px;
+  background-color:rgb(248, 248, 248);/* rgb(241, 241, 241); */
+  border-radius: 10%;
+  border: solid 3px rgb(202, 202, 202);
+  position:absolute;
+}
+#lc1-inner1,#lc1-inner2,#lc2-inner1,#lc2-inner2,#lc3-inner1,#lc3-inner2,#lc4-inner1,#lc4-inner2{
+  height: 30px;
+  /* rgb(241, 241, 241); */
+  background-color:rgb(145, 145, 145);
+  border: solid 3px rgb(248, 248, 248);;
+  position:absolute;
+}
+#lc1-inner1{
+  width:30px;
+  border-radius: 50%;
+  top: 6px;
+  left: 10px;
+}
+#lc1-inner2{
+  width:50px;
+  height:20px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  top: 33px;
+  left: 2px;
+}
+#lc2-inner1{
+  width:30px;
+  border-radius: 50%;
+  top: 6px;
+  left: 10px;
+}
+#lc2-inner2{
+  width:50px;
+  height:20px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  top: 33px;
+  left: 2px;
+}
+#lc3-inner1{
+  width:30px;
+  border-radius: 50%;
+  top: 6px;
+  left: 10px;
+}
+#lc3-inner2{
+  width:50px;
+  height:20px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  top: 33px;
+  left: 2px;
+}
+#lc4-inner1{
+  width:30px;
+  border-radius: 50%;
+  top: 6px;
+  left: 10px;
+}
+#lc4-inner2{
+  width:50px;
+  height:20px;
+  border-top-left-radius: 50%;
+  border-top-right-radius: 50%;
+  top: 33px;
+  left: 2px;
+}
+.lc1{
+  top:15px;
+  left:20px;
+}
+.lc2{
+  top:15px;
+  right:20px;
+}
+.lc3{
+  bottom:15px;
+  left:20px;
+}
+.lc4{
+  bottom:15px;
+  right:20px;
+}
+#player1,#player2,#player3,#player4{
+  font-size: 20px;
+  font-family:cursive;
+  color:white;
+  position:absolute;
+  width: 71px;
+  border-radius: 10%;
+  left: 62px;
+  top: -14px;
+  padding: 9% 9% ;
+}
+#player1{background-color: red;}
+#player2{background-color: blue;}
+#player3{background-color: green;}
+#player4{background-color: rgb(255, 174, 0)}
